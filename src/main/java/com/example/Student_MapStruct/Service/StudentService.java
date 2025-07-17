@@ -75,7 +75,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public Page<StudentResponse> getByName(String name, Pageable pageable) {
-        Page<Student> page = repository.findByNameIgnoreCase(name, pageable);
+        Page<Student> page = repository.findByNameContainingIgnoreCase(name, pageable);
         if (page.isEmpty()) {
             throw new BadRequestException("Tên không tồn tại");
         }
